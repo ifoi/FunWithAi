@@ -6,10 +6,11 @@ function getPrompt( domObject) {
     return prompt ;
 }
 
-module.exports = getPrompt ;
+module.exports =  getPrompt ;
 
 export function getApiResponse( prompt) {
-       apiResponse = "this is a story" 
+    console.log(prompt) ;
+    let apiResponse = "this is a story"  ;
 /*     const data = {
         prompt: "Write a poem about a dog wearing skis",
         temperature: 0.5,

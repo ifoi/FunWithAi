@@ -7,7 +7,8 @@
 
 const { it } = require("@jest/globals");
 const getPrompt = require("./getPrompt");
-import getApiResponse from "./getPrompt" ;
+// import getApiResponse from "./getPrompt" ;
+const getApiResponse = require("./getPrompt");
 
 test('use jsdom in this test file', () => {
     const element = document.createElement('div');
@@ -26,7 +27,8 @@ describe("getPrompt", () => {
 describe("getApiResponse", ()=>{
     it("should send the sumbited text, to the API", ()=>{
         let prompt = "tell a story about an elephant saying hello "
-        expect(getApiResponse(prompt)).to.BeTruthy() ;
+        console.log(getApiResponse(prompt));
+        expect(getApiResponse(prompt)).toBe("this is a story") ;
     })
 })
 
