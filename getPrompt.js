@@ -9,8 +9,8 @@ function getPrompt( domObject) {
 module.exports = getPrompt ;
 
 export function getApiResponse( prompt) {
-     //  apiResponse = "this is a story" 
-     const data = {
+       apiResponse = "this is a story" 
+/*     const data = {
         prompt: "Write a poem about a dog wearing skis",
         temperature: 0.5,
         max_tokens: 64,
@@ -35,8 +35,10 @@ export function getApiResponse( prompt) {
     })
    .then( (aiResponse) =>{
        console.log(aiResponse)
-   } ) 
+   } )  */
 
 return apiResponse
 
 }
+
+

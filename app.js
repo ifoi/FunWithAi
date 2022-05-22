@@ -1,5 +1,5 @@
 
-import getPrompt, getApiResponse from "./getPrompt"
+import {getPrompt, getApiResponse } from "./getPrompt.js"
 
 
 const myform = document.getElementById("myForm");
@@ -13,17 +13,16 @@ const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
 // store prompts and array Data 
 
 
+myform.addEventListener("submit", handleForm ) ;
 
-// function handleForm() {
-
-
-
-myform.addEventListener("submit", function(e){
+function handleForm(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
     let prompt = getPrompt(formData.prompt)
     
+    console.log(prompt)
+
     getApiResponse(prompt)
 
     
@@ -54,6 +53,8 @@ myform.addEventListener("submit", function(e){
 //        console.log(aiResponse)
 //    } ) 
    
-}) 
+}
+
+
 
 // add to List of Responses
