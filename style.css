@@ -1,0 +1,12 @@
+
+
+
+
+input[type=submit]{
+   background-color: blue;
+   color: white;
+   cursor: pointer;
+   position: relative;
+   right: 0; 
+
+}
