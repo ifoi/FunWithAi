@@ -1,9 +1,15 @@
 
-import getPrompt, getApiResponse from "./getPrompt"
+import {getPrompt, getApiResponse, responesList } from "./getPrompt.js"
 
 
 const myform = document.getElementById("myForm");
 const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
+
+const promptElm = document.getElementById("prompt");
+const list = document.createDocumentFragment();
+
+
+const responesList = [ ] ; 
 
 // const getPrompt = require("./getPrompt");
 // const getApiResponse = require("./getPrompt");
@@ -13,47 +19,50 @@ const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
 // store prompts and array Data 
 
 
+myform.addEventListener("submit", handleForm ) ;
 
-// function handleForm() {
-
-
-
-myform.addEventListener("submit", function(e){
+function handleForm(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
     let prompt = getPrompt(formData.prompt)
     
-    getApiResponse(prompt)
-
+    console.log(prompt)
     
-//     const data = {
-//         prompt: "Write a poem about a dog wearing skis",
-//         temperature: 0.5,
-//         max_tokens: 64,
-//         top_p: 1.0,
-//         frequency_penalty: 0.0,
-//         presence_penalty: 0.0,
-//        };
-//    // data.prompt = formData.m    
-   
-//     fetch(url, {
-//         method: "POST",
-//         headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
-//             },
-//             body: JSON.stringify(data),
-//         }) //;
-   
-//   // )
-//    .then( (response) => {
-//        return response.json(); 
-//     })
-//    .then( (aiResponse) =>{
-//        console.log(aiResponse)
-//    } ) 
-   
-}) 
+    let apiResponse = getApiResponse(prompt)
+    
+
+    responesList.unshift(createList(apiResponse) ) ; 
+    
+    renderList() 
+
+    promptElm.textContent = "" ;
+    
+ 
+    /* createList( apiResponse) {
+        responseList.unshift() */
+        
+    } 
+
+    function createList(apiResponse) {
+        const responseData = {
+            prompt: "",
+            temperature: 0.5,
+            max_tokens: 64,
+            top_p: 1.0,
+            frequency_penalty: 0.0,
+            presence_penalty: 0.0,
+           };
+       
+           responseData.prompt = apiResponse
+
+           return (responseData);
+
+            
+    }
+
 
 // add to List of Responses
+function renderList( list ) {
+    
+}
