@@ -10,3 +10,7 @@ input[type=submit]{
    right: 0; 
 
 }
+
+#aiResponse{
+   background: rgb(221, 220, 198);
+}

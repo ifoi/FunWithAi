@@ -8,7 +8,7 @@
 const { it } = require("@jest/globals");
 const getPrompt = require("./getPrompt");
 // import getApiResponse from "./getPrompt" ;
-const getApiResponse = require("./getPrompt");
+const getApiResponse = require("./getPrompt.js");
 
 test('use jsdom in this test file', () => {
     const element = document.createElement('div');

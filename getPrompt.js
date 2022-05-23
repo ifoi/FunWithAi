@@ -38,7 +38,7 @@ export function getApiResponse( prompt) {
        console.log(aiResponse)
    } )  */
 
-return apiResponse
+return {apiResponse }
 
 }
 
