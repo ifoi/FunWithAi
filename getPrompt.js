@@ -1,17 +1,18 @@
 
 
-function getPrompt( domObject) {
+/*export default */  function getPrompt( domObject) {
     prompt = domObject.innerTEXT ;
 
     return prompt ;
 }
 
-module.exports =  getPrompt ;
-
-export function getApiResponse( prompt) {
-    console.log(prompt) ;
-    let apiResponse = "this is a story"  ;
-/*     const data = {
+module.exports = {getPrompt: getPrompt, 
+                   getApiResponse: getApiResponse
+                 }
+/*export */ function getApiResponse( prompt) {
+    
+    let apiResponse = prompt ;
+    const data = {
         prompt: "Write a poem about a dog wearing skis",
         temperature: 0.5,
         max_tokens: 64,
@@ -34,11 +35,11 @@ export function getApiResponse( prompt) {
    .then( (response) => {
        return response.json(); 
     })
-   .then( (aiResponse) =>{
-       console.log(aiResponse)
-   } )  */
+   .then( (apiResponse) =>{
+       console.log(apiResponse)
+   } )  
 
-return {apiResponse }
+return apiResponse
 
 }
 

@@ -5,6 +5,11 @@ import {getPrompt, getApiResponse } from "./getPrompt.js"
 const myform = document.getElementById("myForm");
 const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
 
+const promptElm = document.getElementById("prompt");
+
+const responesList = [ {prompt: "",
+                     response: ""}] 
+
 // const getPrompt = require("./getPrompt");
 // const getApiResponse = require("./getPrompt");
 
@@ -25,6 +30,7 @@ function handleForm(e) {
 
     getApiResponse(prompt)
 
+    promptElm.textContent = "" ;
     
 //     const data = {
 //         prompt: "Write a poem about a dog wearing skis",
