@@ -1,14 +1,15 @@
 
-import {getPrompt, getApiResponse } from "./getPrompt.js"
+import {getPrompt, getApiResponse, responesList } from "./getPrompt.js"
 
 
 const myform = document.getElementById("myForm");
 const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
 
 const promptElm = document.getElementById("prompt");
+const list = document.createDocumentFragment();
 
-const responesList = [ {prompt: "",
-                     response: ""}] 
+
+const responesList = [ ] ; 
 
 // const getPrompt = require("./getPrompt");
 // const getApiResponse = require("./getPrompt");
@@ -27,40 +28,41 @@ function handleForm(e) {
     let prompt = getPrompt(formData.prompt)
     
     console.log(prompt)
+    
+    let apiResponse = getApiResponse(prompt)
+    
 
-    getApiResponse(prompt)
+    responesList.unshift(createList(apiResponse) ) ; 
+    
+    renderList() 
 
     promptElm.textContent = "" ;
     
-//     const data = {
-//         prompt: "Write a poem about a dog wearing skis",
-//         temperature: 0.5,
-//         max_tokens: 64,
-//         top_p: 1.0,
-//         frequency_penalty: 0.0,
-//         presence_penalty: 0.0,
-//        };
-//    // data.prompt = formData.m    
-   
-//     fetch(url, {
-//         method: "POST",
-//         headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
-//             },
-//             body: JSON.stringify(data),
-//         }) //;
-   
-//   // )
-//    .then( (response) => {
-//        return response.json(); 
-//     })
-//    .then( (aiResponse) =>{
-//        console.log(aiResponse)
-//    } ) 
-   
-}
+ 
+    /* createList( apiResponse) {
+        responseList.unshift() */
+        
+    } 
 
+    function createList(apiResponse) {
+        const responseData = {
+            prompt: "",
+            temperature: 0.5,
+            max_tokens: 64,
+            top_p: 1.0,
+            frequency_penalty: 0.0,
+            presence_penalty: 0.0,
+           };
+       
+           responseData.prompt = apiResponse
+
+           return (responseData);
+
+            
+    }
 
 
 // add to List of Responses
+function renderList( list ) {
+    
+}

@@ -1,17 +1,19 @@
 
+ const responseList = [ ] ; 
 
-/*export default */  function getPrompt( domObject) {
+ function getPrompt( domObject) {
     prompt = domObject.innerTEXT ;
 
     return prompt ;
 }
 
 module.exports = {getPrompt: getPrompt, 
-                   getApiResponse: getApiResponse
-                 }
-/*export */ function getApiResponse( prompt) {
+                   getApiResponse: getApiResponse,
+                 } ;
+
+async function getApiResponse( prompt) {
     
-    let apiResponse = prompt ;
+    let apiResponse = "" ;
     const data = {
         prompt: "Write a poem about a dog wearing skis",
         temperature: 0.5,
@@ -20,7 +22,7 @@ module.exports = {getPrompt: getPrompt,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
        };
-   // data.prompt = formData.m    
+    data.prompt = prompt ;
    
     fetch(url, {
         method: "POST",
@@ -31,15 +33,17 @@ module.exports = {getPrompt: getPrompt,
             body: JSON.stringify(data),
         }) //;
    
-  // )
-   .then( (response) => {
+    .then( (response) => {
        return response.json(); 
     })
-   .then( (apiResponse) =>{
+    .then( (apiResponse) =>{
        console.log(apiResponse)
-   } )  
-
-return apiResponse
+       data.prompt = apiResponse.results.prompt ;
+       responseList.unshift(data) ;
+    })  
+   
+   
+return data.prompt //apiResponse
 
 }
 
