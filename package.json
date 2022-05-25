@@ -4,6 +4,8 @@
     "dotenv-webpack": "^7.1.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "msw": "^0.41.0",
+    "regenerator-runtime": "^0.13.9",
     "supertest": "^6.2.3"
   },
   "name": "funwithai",
@@ -99,6 +101,7 @@
     "is-number": "^7.0.0",
     "is-stream": "^2.0.1",
     "isexe": "^2.0.0",
+    "isomorphic-fetch": "^3.0.0",
     "istanbul-lib-coverage": "^3.2.0",
     "istanbul-lib-instrument": "^5.2.0",
     "istanbul-lib-report": "^3.0.0",

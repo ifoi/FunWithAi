@@ -1,5 +1,5 @@
 
- const responseList = [ ] ; 
+ export const responseList = [ ] ; 
 
  function getPrompt( domObject) {
     prompt = domObject.innerTEXT ;
@@ -9,7 +9,7 @@
 
 module.exports = {getPrompt: getPrompt, 
                    getApiResponse: getApiResponse,
-                 } ;
+                  } ;
 
 async function getApiResponse( prompt) {
     
@@ -40,7 +40,10 @@ async function getApiResponse( prompt) {
        console.log(apiResponse)
        data.prompt = apiResponse.results.prompt ;
        responseList.unshift(data) ;
-    })  
+    })
+    .catch( (error => {
+         throw error;
+        }))  
    
    
 return data.prompt //apiResponse

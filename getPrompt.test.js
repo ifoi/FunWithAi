@@ -1,6 +1,8 @@
 /**
  * @jest-environment jsdom
  */
+ import 'regenerator-runtime/runtime'
+ import fetch from 'isomorphic-fetch'
 
 // const { expect } = require("@jest/globals");
 // const { describe } = require("jest-circus");

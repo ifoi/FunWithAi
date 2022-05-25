@@ -1,5 +1,5 @@
 
-import {getPrompt, getApiResponse, responesList } from "./getPrompt.js"
+import {getPrompt, getApiResponse, responseList } from "./getPrompt.js"
 
 
 const myform = document.getElementById("myForm");
@@ -7,9 +7,9 @@ const url = "https://api.openai.com/v1/engines/text-curie-001/completions"
 
 const promptElm = document.getElementById("prompt");
 const list = document.createDocumentFragment();
+const aiResponseElm = document.getElementById("aiResponse");
 
-
-const responesList = [ ] ; 
+//const responesList = [ ] ; 
 
 // const getPrompt = require("./getPrompt");
 // const getApiResponse = require("./getPrompt");
@@ -18,10 +18,11 @@ const responesList = [ ] ;
 
 // store prompts and array Data 
 
+console.log(myform) ;
 
 myform.addEventListener("submit", handleForm ) ;
 
-function handleForm(e) {
+async function handleForm(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
@@ -29,12 +30,12 @@ function handleForm(e) {
     
     console.log(prompt)
     
-    let apiResponse = getApiResponse(prompt)
+    let apiResponse = await getApiResponse(prompt)
     
-
-    responesList.unshift(createList(apiResponse) ) ; 
+    //add to Array of responses 
+    responseList.unshift( createList(apiResponse) ) ; 
     
-    renderList() 
+    aiResponseElm.appendChild(renderList() ) 
 
     promptElm.textContent = "" ;
     
@@ -62,7 +63,11 @@ function handleForm(e) {
     }
 
 
-// add to List of Responses
-function renderList( list ) {
-    
+// add builds HTML List of Responses
+export function renderList( list ) {
+    const li = document.createElement('li');
+    li.textContent = "this is a test response";
+    list.appendChild(li);
+    aiResponseElm.appendChild(list ) 
+    return list
 }
